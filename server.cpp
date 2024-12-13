@@ -75,6 +75,10 @@ static int32_t one_request(int connfd) {
     return err;
   }
 
+  for (int i = 0; i < 4; ++i) {
+    printf("rbuf[%d]: %02x\n", i, (unsigned char)rbuf[i]);
+  }
+
   uint32_t len = 0;
   memcpy(&len, rbuf, 4);
   if (len > k_max_msg) {
